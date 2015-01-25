@@ -43,8 +43,8 @@ module.exports = oop.Base.extend({
 		this.getService().modelClass.findOne({_id: id}, callback);
 	},
 
-	save: function (data, callback) {
-		this.getService.modelClass(opts).save(callback);
+	create: function (data, callback) {
+		new this.modelClass(data).save(callback);
 	},
 
 	update: function (data, callback) {
@@ -52,7 +52,7 @@ module.exports = oop.Base.extend({
 	},
 
 	del: function (id, callback) {
-		// TODO
+		this.modelClass.findByIdAndRemove(id, callback);
 	},
 
 	getService: function () {
