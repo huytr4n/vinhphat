@@ -3,7 +3,7 @@ var oop = require('node-g3').oop,
 		async = require('async'),
 
 		dbManager = require('./db/'),
-		server = require('./dashboard/server');
+		ServerManager = require('./dashboard/server');
 
 var Server = oop.Base.extend({
 	constructor: function () {
@@ -15,7 +15,7 @@ var Server = oop.Base.extend({
 	},
 
 	startServer: function (callback) {
-		server(this, callback);
+		ServerManager(this, callback);
 	},
 
 	addControllers: function () {
