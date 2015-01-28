@@ -5,7 +5,8 @@ var http = require('http'),
  		logger = require('morgan'),
  		cookieParser = require('cookie-parser'),
  		bodyParser = require('body-parser'),
- 		port = 3002;
+ 		configs = require('../utils/configs'),
+ 		port = configs.get('server:port');
 
 module.exports = function (wrapper, callback) {
 	var app = wrapper.app = express();
@@ -14,7 +15,7 @@ module.exports = function (wrapper, callback) {
 		app.set('port', port);
 
 		// view engine setup
-		app.set('views', path.join(__dirname, '../views'));
+		app.set('views', path.join(__dirname, '/../views'));
 		app.set('view engine', 'jade');
 
 		// uncomment after placing your favicon in /public
@@ -23,7 +24,7 @@ module.exports = function (wrapper, callback) {
 		app.use(bodyParser.json());
 		app.use(bodyParser.urlencoded({ extended: false }));
 		app.use(cookieParser());
-		app.use(express.static(path.join(__dirname, 'public')));
+		app.use(express.static(path.join(__dirname, '/../public')));
 
 		// home page
 		app.get('/', function (req, res) {

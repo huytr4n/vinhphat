@@ -1,0 +1,28 @@
+extends ../components/layout
+
+block content
+	.container
+		.row
+			.col-md-12
+				h2 Test User
+		
+		table(class='table')
+			tr
+				th No
+				th Name
+				th Username
+				th Action
+			- each user, i in users
+				tr
+					td
+						span #{i+1}
+					td
+						span #{user.name}
+					td
+						span #{user.username} 
+					td
+						a(href='/user/del/#{user._id}') remove
+
+		.row
+			.col-md-12
+				a(href='/user/add', class='btn btn-default') add new user

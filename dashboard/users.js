@@ -21,7 +21,7 @@ module.exports = oop.Base.extend({
 
 		app.get('/user', function (req, res) {
 			dbUser.getAll(function (err, users) {
-				res.render('user/home', {users: users});
+				res.render('user/user_home', {users: users});
 			});
 		});
 	},

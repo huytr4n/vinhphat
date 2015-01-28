@@ -1,5 +1,11 @@
-h2 add user
-form(action='/user', method='post')
-	label username
-	input(type='text', value='', name='username')
-	input(type='submit')
+extends ../layout
+
+block content
+	.container
+		h2 add user
+
+		form(action='/user', method='post', class='navbar-form navbar-left')
+			.form-group
+				span(class='navbar-brand') username
+				input(type='text', value='', name='username', class='form-control')
+				input(type='submit', class='btn btn-default', class='block')

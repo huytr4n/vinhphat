@@ -1,8 +1,21 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #ecf0f0;
 }
 
 a {
   color: #00B7FF;
+}
+
+.no-border {
+	border: none;
+}
+
+.product-header {
+	background-color: #4ab367 !important;
+	border: none;
+}
+
+.home-nav-top {
+	background-color: #4ab367 !important;
 }
