@@ -1,0 +1,25 @@
+head
+	title Home
+
+header(class='site-header')
+	.container
+		.row
+			.col-md-6
+				h2
+					a(href='/') SAMPLE
+			.col-md-3
+				.input-group.homepage-search
+					input(type='text' class='form-control' placeholder='Search')
+					span(class='input-group-btn')
+						button(class='btn btn-default' type='button') Search
+
+nav(class='navbar navbar-default' role='navigation')
+	.container
+		.navbar-collapse.collapse
+			ul(class='nav navbar-nav')
+				li(class='active')
+					a(href='/') Home
+				li
+					a(href='/products') Products
+				li
+					a(href='/about') About

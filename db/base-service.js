@@ -2,7 +2,8 @@ var oop = require('node-g3').oop;
 
 var mongoose = require('mongoose'),
 		async = require('async'),
-		_ = require('underscore');
+		_ = require('underscore'),
+		configs = require('../utils/configs');
 
 
 module.exports = oop.Base.extend({
@@ -20,7 +21,7 @@ module.exports = oop.Base.extend({
 	 * @overriden
 	 */
 	init: function (fn) {
-		mongoose.connect('mongodb://localhost:27017/base', fn);
+		mongoose.connect(configs.get('database:connectionString'), fn);
 	},
 
 	/**

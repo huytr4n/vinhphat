@@ -1,6 +1,19 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #ecf0f0;
+  background: #fff;
+  font-size: 15px;
+	line-height: 1.6;
+	font-family: "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: #585858;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+}
+
+.site-header h2 a {
+	color: #fff;
+}
+
+.site-header h2 a:hover {
+	text-decoration: none;
 }
 
 a {
@@ -18,4 +31,39 @@ a {
 
 .home-nav-top {
 	background-color: #4ab367 !important;
+}
+
+.site-header {
+	padding: 30px;
+	background-color: #204a80;
+	color: #fff;
+}
+
+.homepage-search {
+	margin-top: 20px;
+}
+
+.footer {
+	color: #636363;
+	background-color: #f2f2f2;
+}
+
+hr {
+	clear: both;
+	border-top: solid #ececec;
+	border-width: 1px 0 0;
+	border-top-color: #e5e5e5;
+}
+
+.index-slider li {
+	margin-left: 5px !important;
+}
+
+.product-item-name {
+	color: #204a80;
+}
+
+.middle-section {
+	margin-top: 50px;
+	margin-bottom: 50px;
 }

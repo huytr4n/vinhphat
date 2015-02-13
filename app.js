@@ -21,7 +21,8 @@ var Server = oop.Base.extend({
 	addControllers: function () {
 		var self = this,
 				controllers = {
-					users: 'users'
+					'users': 'users',
+					'products': 'products'
 				};
 
 		_.each(controllers, function (direct, name) {

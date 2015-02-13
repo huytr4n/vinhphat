@@ -1,59 +1,50 @@
 extends components/layout
 
 block content
-	head
-		title Home
 
 	.container
 		.row
-			.col-md-12.banner
-				p This is banner | Vinh Phat IT
+			.col-md-1
+			.col-md-10.index-slider
+				div(id='carousel-example-generic' class='carousel slide text-center' data-ride='carousel')
+					ol(class='carousel-indicators')
+						li(data-target='#carousel-example-generic' data-slide-to='0' class='active')
+						li(data-target='#carousel-example-generic' data-slide-to='1')
+						li(data-target='#carousel-example-generic' data-slide-to='2')
+					.carousel-inner(role='listbox')
+						.item.active
+							img(src='http://cdn.shopify.com/s/files/1/0765/9165/t/2/assets/slide_2.jpg?14824530909511496293')
+							.carousel-caption
+								p picture 1
+						.item
+							img(src='http://cdn.shopify.com/s/files/1/0765/9165/t/2/assets/slide_2.jpg?14824530909511496293')
+							.carousel-caption
+								p picture 2
+						.item
+							img(src='http://cdn.shopify.com/s/files/1/0765/9165/t/2/assets/slide_2.jpg?14824530909511496293')
+							.carousel-caption
+								p picture 3
 
+			//- a(class='left carousel-control' href='#carousel-example-generic' data-slide='prev' role='button')
+			//- 	span(class='glyphicon glyphicon-chevron-left' aria-hidden='true')
+			//- 	span(class='sr-only') Previous
+			//- a(class='right carousel-control' href='#carousel-example-generic' role='button' data-slide='next')
+			//- 	span(class='glyphicon glyphicon-chevron-right' aria-hidden='true')
+			//- 	span(class='sr-only') Next
+
+	.container
 		.row
-			.col-md-12
-				ul(class='nav nav-pills')
-					li(class='active', role='presentation')
-						a(class='home-nav-top' href='javascript:void(0)') Home
-					li
-						a(href='javascript:void(0)') Products
-					li
-						a(href='javascript:void(0)') About
-
-		.row
-			.col-md-12
-				.slider
-					h1 This is slider space
-
-		.row
-			.search
-				.col-md-12
-					h1 This is search
-
-		.row.main-contain
-			.col-md-3.slide-bar
-				ul(class='nav')
-					li(class='active')
-						a(href='javascript:void(0)') Laptop
-					li
-						a(href='javascript:void(0)') Desktop
-					li
-						a(href='javascript:void(0)') Phone
-
 			.col-md-9
-				- for (var i = 0; i < 12; i ++)
-					.col-md-4
-						.panel.panel-primary.no-border
-							.panel-heading.product-header
-								h3(class='panel-title') Product #{i+1}
-							.panel-body
-								p Body
-
-
-		.row
+				h3 SHOP
+			.col-md-3
+				a(href='javascript:void(0)')
+					p More
+			.col-md-12.text-center
+				p outline here
 			.col-md-12
-				.panel.panel-default
-					.panel-body
-						h3 footer body
-					.panel-footer
-						h3 This is footer
-
+				- for (var i = 0; i < 10; i++)
+					.col-md-3
+						a(class='product-item' href='/products/1')
+							img(class='img-responsive' src='/images/default-store-350x350.jpg')
+						p(class='product-item-name') Sample
+						p(class='product-item-price') 9.99$

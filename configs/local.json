@@ -2,5 +2,8 @@
 	"server": {
 		"host": "localhost",
 		"port": 3000
+	},
+	"database": {
+		"connectionString": "mongodb://107.21.151.195:27017/base"
 	}
 }

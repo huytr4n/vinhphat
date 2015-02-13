@@ -3,5 +3,16 @@ html
 	head
 		link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
 		link(rel='stylesheet' href='/stylesheets/style.css')
+		script(src='/bower_components/jquery/dist/jquery.min.js')
+		script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+		script(src='/bower_components/smooth-scroll/smooth-scroll.js')
+		script(type='text/javascript').
+			$(document).ready(function () {
+				$.smoothScroll();
+			});
+	
+	include header
 
 	block content
+
+	include footer
