@@ -11,7 +11,7 @@ var Server = oop.Base.extend({
 	},
 
 	initDabase: function (callback) {
-		this.db.init(['dbUser'], callback);
+		this.db.init(['dbUser', 'dbProduct'], callback);
 	},
 
 	startServer: function (callback) {
@@ -22,7 +22,8 @@ var Server = oop.Base.extend({
 		var self = this,
 				controllers = {
 					'users': 'users',
-					'products': 'products'
+					'products': 'products',
+					'dashboard-products': 'dashboard-products'
 				};
 
 		_.each(controllers, function (direct, name) {

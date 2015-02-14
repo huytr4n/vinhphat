@@ -3,7 +3,10 @@ var oop = require('node-g3').oop;
 var mongoose = require('mongoose'),
 		async = require('async'),
 		_ = require('underscore'),
-		configs = require('../utils/configs');
+		configs = require('../utils/configs'),
+		isConnecting = false,
+		isConnected = false,
+		fnQueue = [];
 
 
 module.exports = oop.Base.extend({
@@ -21,7 +24,27 @@ module.exports = oop.Base.extend({
 	 * @overriden
 	 */
 	init: function (fn) {
-		mongoose.connect(configs.get('database:connectionString'), fn);
+		fnQueue.push(fn);
+
+		if (isConnecting) {
+			return;
+		} else {
+			isConnecting = true;
+		}
+
+		if (!isConnected) {
+			mongoose.connect(configs.get('database:connectionString'));
+
+			mongoose.connection.once('open', function callback () {
+        isConnecting = false;
+        isConnected = true;
+	        _.each(fnQueue, function (oneFn) {
+	           oneFn && oneFn();
+	        });
+		    });		
+    } else {
+			fn && fn();
+		}
 	},
 
 	/**
@@ -37,19 +60,29 @@ module.exports = oop.Base.extend({
 	},
 
 	getOne: function (opts, callback) {
-		this.getService().modelClass.findOne(opts, callback);
+		this.modelClass.findOne(opts, callback);
 	},
 
 	findById: function (id, callback) {
-		this.getService().modelClass.findOne({_id: id}, callback);
+		this.modelClass.findOne({_id: id}, callback);
 	},
 
 	create: function (data, callback) {
 		new this.modelClass(data).save(callback);
 	},
 
-	update: function (data, callback) {
-		// TODO
+	update: function (id, data, callback) {
+		this.findById(id, function (err, item) {
+			if (err || !item)
+				return callback && callback();
+
+			_.each(data, function (value, key) {
+				if (value)
+					item[key] = value;
+			});
+
+			item.save(callback);
+		});
 	},
 
 	del: function (id, callback) {

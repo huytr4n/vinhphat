@@ -32,8 +32,13 @@ var DatabaseManager = oop.Base.extend({
       var service = container[neededService] = new servicesClasses[neededService](app);
       service.init(done);
     }, function (error) {
-      if (error) self.log('Database service init fail', error);
-      else self.log('Database service init success');
+      if (error) {
+        console.log(error);
+        self.log('Database service init fail', error);
+      } else {
+        self.log('Database service init success');
+      }
+      
       fn(error);
     });
   },

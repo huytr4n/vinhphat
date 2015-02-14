@@ -11,7 +11,7 @@
     "limiter": "1.0.5",
     "mongoose": "3.8.22",
     "morgan": "1.5.1",
-    "nconf": "^0.7.1",
+    "nconf": "0.7.1",
     "node-g3": "0.0.2",
     "serve-favicon": "2.2.0",
     "underscore": "1.7.0"
