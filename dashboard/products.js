@@ -1,5 +1,6 @@
 var oop = require('node-g3').oop,
-		async = require('async');
+		async = require('async'),
+		_ = require('underscore');
 
 module.exports = oop.Base.extend({
 	constructor: function (wrapper) {
@@ -11,22 +12,33 @@ module.exports = oop.Base.extend({
 		var self = this;
 
 		this.get(this.app);
-		// this.add(this.app);
-		// this.del(this.app);
+		this.homepage(this.app);		
 	},
 
 	get: function (app) {
-		// var self = this,
-		// 		dbUser = this.db.getInstance('dbUser');
-
-		// app.get('/user', function (req, res) {
-		// 	dbUser.getAll(function (err, users) {
-		// 		res.render('user/user_home', {users: users});
-		// 	});
-		// });
+		var self = this,
+				dbProduct = this.db.getInstance('dbProduct');
 		
 		app.get('/products/:id', function (req, res) {
-			res.render('product/detail');
+			var id = req.params.id;
+			
+			dbProduct.findById(id, function (err, product) {
+				product = product || {};
+
+				res.render('product/detail', {product: product});
+			});
+		});
+	},
+
+	homepage: function (app) {
+		var dbProduct = this.db.getInstance('dbProduct');
+
+		app.get('/', function (req, res) {
+			dbProduct.getAll(function (err, products) {
+				products = products || [];
+
+				res.render('index', {count: _.size(products), items: products});
+			});
 		});
 	}
 

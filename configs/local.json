@@ -5,5 +5,9 @@
 	},
 	"database": {
 		"connectionString": "mongodb://localhost:27017/base"
+	},
+	"auth": {
+		"username": "huytran",
+		"password": "78e79bc21d3c25ee72d7474bab94b782"
 	}
 }

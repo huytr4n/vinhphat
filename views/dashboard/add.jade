@@ -1,0 +1,78 @@
+extends ../components/layout
+
+block content
+	.container
+	.row.middle-section 
+		.col-md-2
+		.col-md-10
+			a(href='/dashboard-admin') back to manager 
+			h1 add product
+
+			form(action='/api/products', method='post', class='navbar-form navbar-left')
+				.form-group
+					.col-md-12
+						span(class='navbar-brand') name
+						input(type='text', value='', name='name', class='form-control')
+					.col-md-12
+						span(class='navbar-brand') price
+						input(type='text', value='', name='price', class='form-control')
+					.col-md-12
+						span(class='navbar-brand') currency
+						input(type='text', value='vnd', name='currency', class='form-control')
+					.col-md-12
+						span(class='navbar-brand') image
+						input(type='text', value='', name='imageURL', class='form-control')
+
+					.col-md-12
+						input(type='button', id='addButton', value='Add', class='btn btn-default', class='block')
+
+			div(class='col-md-6', id='successMsg',  hidden='true')
+				.alert.alert-success.alert-dismissible(role='alert')
+					| Add Product Success
+					button.close(type='button', data-dismiss='alert', aria-label='Close')
+						span(aria-hidden='true') &times;
+
+			div(class='col-md-6', id='requireMsg',  hidden='true')
+				.alert.alert-danger.alert-dismissible(role='alert')
+					| Please fill out all info
+					button.close(type='button', data-dismiss='alert', aria-label='Close')
+						span(aria-hidden='true') &times;
+
+	script(type='text/javascript').
+		$(document).ready(function () {
+			$('#addButton').on('click', function () {
+				// submit data
+				var name = $('input[name="name"]').val(),
+						price = $('input[name="price"').val(),
+						currency = $('input[name="currency"').val(),
+						imageURL = $('input[name="imageURL"').val(),
+						data = {};
+
+				if (name == '' || price == '' || currency == '') {
+					$('#requireMsg').show();
+				} else {
+					data = {
+						name: name,
+						price: price,
+						currency: currency,
+						imageURL: imageURL
+					};
+
+					$.ajax({
+						url: '/api/products',
+						method: 'post',
+						dataType: 'json',
+						data: data
+					}).done(function (result) {
+						console.log(result);
+
+						$('#successMsg').show();
+					}).fail(function () {
+
+					}).always(function () {
+
+					});
+				}
+			});
+		});
+		

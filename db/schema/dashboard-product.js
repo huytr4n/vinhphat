@@ -9,6 +9,9 @@ module.exports = function () {
 		name: String,
 		price: Number,
 		currency: String,
+
+		imageURL: String,
+
 		cretedAt: {default: new Date, type: Date},
 		updatedAt: Date
 	});

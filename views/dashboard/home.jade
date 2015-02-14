@@ -1,0 +1,49 @@
+extends ../components/layout
+
+block content
+	.container
+	.row
+		.col-md-1
+		.col-md-10
+			h2 Test User
+	
+			table(class='table')
+				tr
+					th No
+					th Name
+					th Price
+					th Currency
+					th Action
+				- each item, i in items
+					tr
+						td
+							span #{i+1}
+						td
+							span #{item.name}
+						td
+							span #{item.price} 
+						td
+							span #{item.currency}
+						td
+							a(class='removeBtn aTagCursor', id='#{item._id}') remove
+
+	.row(style='margin-bottom: 50px;')
+		.col-md-1
+		.col-md-10
+			a(href='/dashboard-product/add', class='btn btn-default') Add More
+
+	script(type='text/javascript').
+		$(document).ready(function () {
+			$('.removeBtn').on('click', function () {
+				var id = this.id;
+
+				$.ajax({
+					url: '/api/products/' + id,
+					method: 'delete'
+				}).done(function (result) {
+					console.log(result);
+
+					location.reload();
+				})
+			});
+		});

@@ -42,9 +42,9 @@ block content
 			.col-md-12.text-center
 				p outline here
 			.col-md-12
-				- for (var i = 0; i < 10; i++)
+				- each item, i in items
 					.col-md-3
-						a(class='product-item' href='/products/1')
-							img(class='img-responsive' src='/images/default-store-350x350.jpg')
-						p(class='product-item-name') Sample
-						p(class='product-item-price') 9.99$
+						a(class='product-item' href='/products/#{item._id}')
+							img(class='img-responsive' src='#{item.imageURL}')
+						p(class='product-item-name') #{item.name}
+						p(class='product-item-price') #{item.price} #{item.currency}

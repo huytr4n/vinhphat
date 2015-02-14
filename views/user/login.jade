@@ -1,0 +1,32 @@
+doctype html
+html
+	head
+		link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet' href='/stylesheets/style.css')
+		script(src='/bower_components/jquery/dist/jquery.min.js')
+		script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+
+	body
+		.container
+			.row
+				.col-md-3
+				.col-md-6(style='margin-top: 50px;')
+					form.form-horizontal(action='/login', method='post')
+						.form-group
+							label.col-sm-2.control-label(for='inputEmail3') Username
+							.col-sm-10
+								input#inputEmail3.form-control(name='username', placeholder='Username')
+						.form-group
+							label.col-sm-2.control-label(for='inputPassword3') Password
+							.col-sm-10
+								input#inputPassword3.form-control(type='password', name='password', placeholder='Password')
+						.form-group
+							.col-sm-offset-2.col-sm-10
+								.checkbox
+									label
+										input(type='checkbox')
+										| Remember me
+						.form-group
+							.col-sm-offset-2.col-sm-10
+								button.btn.btn-default(type='submit') Sign in
+				.col-md-3

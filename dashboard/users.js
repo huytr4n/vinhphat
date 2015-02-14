@@ -1,5 +1,7 @@
 var oop = require('node-g3').oop,
-		async = require('async');
+		async = require('async'),
+		crypto = require('crypto'),
+		configs = require('../utils/configs');
 
 module.exports = oop.Base.extend({
 	constructor: function (wrapper) {
@@ -10,9 +12,39 @@ module.exports = oop.Base.extend({
 	init: function () {
 		var self = this;
 
-		this.get(this.app);
-		this.add(this.app);
-		this.del(this.app);
+		this.login(this.app);
+	},
+
+	login: function (app) {
+		// get
+		app.get('/login', function (req, res) {
+			if (req && req.session && req.session.user)
+				res.redirect('/dashboard-admin');
+			else
+				res.render('user/login');
+		});
+
+		// post
+		app.post('/login', function (req, res) {
+			var body = req.body || {},
+					username = body.username,
+					password = body.password;
+
+			var hashPassword = crypto.createHash('md5').update(password).digest('hex');
+
+			if (username && username === configs.get('auth:username')
+				  && password && hashPassword === configs.get('auth:password')) {
+				// set session
+				req.session.user = {role: 'admin', username: username};
+
+				console.log('debug:login:success');
+
+				res.redirect('/dashboard-admin');
+			} else {
+				res.redirect('/login');
+			}
+
+		});
 	},
 
 	get: function (app) {

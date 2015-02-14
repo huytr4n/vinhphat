@@ -11,16 +11,48 @@ module.exports = oop.Base.extend({
 	init: function () {
 		var self = this;
 
-		this.get(this.app);
+		this.router(this.app);
 		this.api(this.app);
-		// this.add(this.app);
-		// this.del(this.app);
 	},
 
-	get: function (app) {
-		
+	checkLogin: function (req, res, next) {
+		next();
+		return
+
+		if (req && req.session && req.session.user && req.session.user.role === 'admin')
+			next();
+		else
+			res.redirect('/login');
 	},
 
+	/**
+	 * Web routing
+	 */
+	router: function (app) {
+		var self = this,
+				dbProduct = this.db.getInstance('dbProduct');
+
+		app.get('/dashboard-admin', this.checkLogin, function (req, res) {
+			dbProduct.getAll({}, function (err, products) {
+				products = products || [];
+
+				res.render('dashboard/home', {count: _.size(products), items: products});
+			});
+		});
+
+		app.get('/dashboard-product/add', this.checkLogin, function (req, res) {
+			res.render('dashboard/add');
+		});
+
+		app.get('/session', function (req, res) {
+			req.session.user = {user: 'admin'};
+			res.send('ok');
+		});
+	},
+
+	/**
+	 * Api end point
+	 */
 	api: function (app) {
 		var self = this,
 				dbProduct = this.db.getInstance('dbProduct');

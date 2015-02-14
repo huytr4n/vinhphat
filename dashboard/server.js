@@ -5,6 +5,7 @@ var http = require('http'),
  		logger = require('morgan'),
  		cookieParser = require('cookie-parser'),
  		bodyParser = require('body-parser'),
+ 		session = require('express-session'),
  		configs = require('../utils/configs'),
  		port = configs.get('server:port');
 
@@ -26,10 +27,9 @@ module.exports = function (wrapper, callback) {
 		app.use(cookieParser());
 		app.use(express.static(path.join(__dirname, '/../public')));
 
-		// home page
-		app.get('/', function (req, res) {
-			res.render('index');
-		});
+		app.use(session({
+			secret: 'keyboard cat'
+		}));
 
 		// create server
 		var server = http.createServer(app);

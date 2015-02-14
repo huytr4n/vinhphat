@@ -4,9 +4,10 @@ block content
 	.container.middle-section
 		.row
 			.col-md-6.img-section
-				img(class='img-responsive' src='/images/default-store-350x350.jpg')
+				img(class='img-responsive' src='#{product.imageURL}')
 			.col-md-6.brief-info-section
-				h2 9.99$
+				h2 #{product.name}
+				h2 #{product.price} #{product.currency}
 				a Buy now
 				h2 Status: Available
 			.col-md-12.full-info-section
