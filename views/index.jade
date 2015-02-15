@@ -4,37 +4,39 @@ block content
 	.container.middle-section
 		.row
 			.col-md-1
-			.col-md-10.index-slider
+			.col-md-10.index-slider.thumbnail
 				div(id='carousel-example-generic' class='carousel slide text-center' data-ride='carousel')
 					ol(class='carousel-indicators')
 						li(data-target='#carousel-example-generic' data-slide-to='0' class='active')
 						li(data-target='#carousel-example-generic' data-slide-to='1')
 						li(data-target='#carousel-example-generic' data-slide-to='2')
+						li(data-target='#carousel-example-generic' data-slide-to='3')
+						li(data-target='#carousel-example-generic' data-slide-to='4')
 					.carousel-inner(role='listbox')
 						.item.active
-							img(src='http://cdn.shopify.com/s/files/1/0765/9165/t/2/assets/slide_2.jpg?14824530909511496293')
-							.carousel-caption
-								p picture 1
+							img(src='/images/slider-1.jpg')
 						.item
-							img(src='http://cdn.shopify.com/s/files/1/0765/9165/t/2/assets/slide_2.jpg?14824530909511496293')
-							.carousel-caption
-								p picture 2
+							img(src='/images/slider-2.jpg')
 						.item
-							img(src='http://cdn.shopify.com/s/files/1/0765/9165/t/2/assets/slide_2.jpg?14824530909511496293')
-							.carousel-caption
-								p picture 3
+							img(src='/images/slider-3.jpg')
+						.item
+							img(src='/images/slider-4.jpg')
+						.item
+							img(src='/images/slider-5.jpg')
 
 	.container.middle-section
 		.row
 			.col-md-1
-			.col-md-8
-				h3 SHOP
-			.col-md-3
+			.col-md-10
+				ul.nav.nav-tabs(role='tablist')
+					li.active(role='presentation')
+						a(href='#home', aria-controls='home', role='tab', data-toggle='tab')
+							b Sản phẩm nổi bật
 			.col-md-12.text-center
 				h4.magin-bottom-100 Sản phẩm đang hot
 			.col-md-12
 				.col-md-1
-				.col-md-9
+				.col-md-10
 					- each item, i in items
 						.col-md-3.item-block.hvr-grow
 							a(href='/products/#{item._id}')

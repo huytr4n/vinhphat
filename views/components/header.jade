@@ -10,7 +10,7 @@ header(class='site-header')
 					a(href='/') Vĩnh Phát Computer
 			.col-md-3
 				.input-group.homepage-search
-					input(type='text' class='form-control' placeholder='Tên sản phẩm', name='searchMsg')
+					input(type='text' class='form-control' placeholder='Tên sản phẩm', name='searchMsg', id='searchBox')
 					span(class='input-group-btn')
 						button(class='btn btn-default' type='button', id='searchBtn') Tìm
 
@@ -33,9 +33,18 @@ nav(class='navbar navbar-default' role='navigation')
 
 script(type='text/javascript').
 	$(document).ready(function () {
-		$('#searchBtn').on('click', function () {
+		var search = function () {
 			var q = $('input[name="searchMsg"]').val();
 
 			window.location.href = '/products?name=' + q;
+		};
+
+		$('#searchBtn').on('click', function () {
+			search();
+		});
+
+		$('#searchBox').on('keydown', function (e) {
+			if (e.which === 13)
+				search();
 		});
 	});
