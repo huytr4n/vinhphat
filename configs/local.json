@@ -4,7 +4,8 @@
 		"port": 3000
 	},
 	"database": {
-		"connectionString": "mongodb://localhost:27017/base"
+		"connectionString": "mongodb://stagingmongo:27017/base",
+		"connectionString_tmp": "mongodb://localhost:27017/base"
 	},
 	"auth": {
 		"username": "huytran",

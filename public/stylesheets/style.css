@@ -72,3 +72,7 @@ hr {
 .aTagCursor {
 	cursor: pointer;
 }
+
+.item-block {
+	min-height: 300px;
+}

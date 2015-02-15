@@ -20,7 +20,7 @@ block content
 
 			.col-md-9
 				- each item, i in items
-					.col-md-4
+					.col-md-4.item-block
 						a(class='product-item' href='/products/#{item._id}')
 							img(class='img-responsive' src='#{item.imageURL}')
 						p(class='product-item-name') #{item.name}
