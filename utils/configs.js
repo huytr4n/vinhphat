@@ -1,7 +1,12 @@
 var nconf = require('nconf'),
-		path = require('path');
+		path = require('path'),
+		fs = require('fs');
 
-var CONFIG_PATH = path.join(__dirname, '/../configs/local.json');
+var CONFIG_PATH = path.join(__dirname, '/../configs/local.json'),
+		DEFAULT_PATH = path.join(__dirname, '/../configs/default.json');
+
+if (fs.existsSync(DEFAULT_PATH))
+   CONFIG_PATH = DEFAULT_PATH;
 
 nconf.argv()
        .env()
