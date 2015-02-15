@@ -10,15 +10,22 @@ block content
 
 			form(action='/api/products', method='post', class='navbar-form navbar-left')
 				.form-group
+					//- name
 					.col-md-12
 						span(class='navbar-brand') name
 						input(type='text', value='', name='name', class='form-control')
+					
+					//- price
 					.col-md-12
 						span(class='navbar-brand') price
 						input(type='text', value='', name='price', class='form-control')
+					
+					//- currency
 					.col-md-12
 						span(class='navbar-brand') currency
 						input(type='text', value='vnd', name='currency', class='form-control')
+					
+					//- type
 					.col-md-12
 						span(class='navbar-brand') type
 						select(class='form-control', name='type')
@@ -26,9 +33,23 @@ block content
 							option(value='desktop') Desktop
 							option(value='phone') Phone
 							option(value='other') Other
+					
+					//- guarantee
+					.col-md-12
+						span(class='navbar-brand') guarantee
+						input(type='text', value='vnd', name='guarantee', class='form-control')
+					
+					//- promotion
+					.col-md-12
+						span(class='navbar-brand') promotion
+						input(type='text', value='vnd', name='promotion', class='form-control')
+					
+					//- image
 					.col-md-12
 						span(class='navbar-brand') image
 						input(type='text', value='', name='imageURL', class='form-control')
+					
+					//- description
 					.col-md-12
 						span(class='navbar-brand') Description
 						textarea(class='form-control', style='width: 400px; height: 150px;', name='description')
@@ -55,6 +76,8 @@ block content
 				var name = $('input[name="name"]').val(),
 						price = $('input[name="price"]').val(),
 						currency = $('input[name="currency"]').val(),
+						guarantee = $('input[name="guarantee"]').val(),
+						promotion = $('input[name="promotion"]').val(),
 						imageURL = $('input[name="imageURL"]').val(),
 						type = $('select[name="type"]').val(),
 						description = $('textarea[name="description"]').val(),
@@ -67,6 +90,8 @@ block content
 						name: name,
 						price: price,
 						currency: currency,
+						guarantee: guarantee,
+						promotion: promotion,
 						imageURL: imageURL,
 						type: type,
 						description: description

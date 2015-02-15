@@ -45,20 +45,24 @@ module.exports = oop.Base.extend({
 			dbProduct.findById(id, function (err, product) {
 				product = product || {};
 
-				res.render('product/detail', {product: self.toJSON(product)});
+				res.render('product/detail', {
+					product: self.toJSON(product),
+					page: 'product',
+					title: product.name
+				});
 			});
 		});
 	},
 
 	solution: function (app) {
 		app.get('/solution', function (req, res) {
-			res.render('solution', {page: 'Solution', title: 'Solution'});
+			res.render('solution', {page: 'solution', title: 'Solution'});
 		});
 	},
 
 	about: function (app) {
 		app.get('/about', function (req, res) {
-			res.render('about', {page: 'About', title: 'About'});
+			res.render('about', {page: 'about', title: 'About'});
 		});
 	},
 

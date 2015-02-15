@@ -16,9 +16,6 @@ module.exports = oop.Base.extend({
 	},
 
 	checkLogin: function (req, res, next) {
-		next();
-		return
-
 		if (req && req.session && req.session.user && req.session.user.role === 'admin')
 			next();
 		else

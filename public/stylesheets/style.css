@@ -73,6 +73,10 @@ hr {
 	min-height: 300px;
 }
 
+.magin-bottom-100 {
+	margin-bottom: 100px;
+}
+
 /**
  * Product
  */
@@ -92,6 +96,14 @@ hr {
 
 .item-block a:hover {
 	text-decoration: none;
+}
+
+.product-detail-name {
+	color: #B61014;
+}
+
+.brief-info-section {
+	margin-bottom: 50px;
 }
 
 @media screen and (min-width : 992px){

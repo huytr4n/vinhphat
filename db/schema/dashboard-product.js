@@ -14,7 +14,12 @@ module.exports = function () {
 		type: String, // laptop, desktop, phone, other
 		hashtags: Array,
 
+		guarantee: String,
+		promotion: String,
+
 		description: String,
+
+		status: {default: true, type: Boolean},
 
 		cretedAt: {default: new Date, type: Date},
 		updatedAt: Date
