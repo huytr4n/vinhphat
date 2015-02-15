@@ -7,16 +7,18 @@ block content
 		.row
 			.col-md-3
 				ul(class='nav nav-pills nav-stacked')
-					li
-						a(href='#') All
-					li(class='active')
-						a(href='#') Laptop
-					li
-						a(href='#') Desktop
-					li
-						a(href='#') Phone
-					li
-						a(href='#') Accessories
+					- var menu = {'all': 'Toàn bộ', 'laptop': 'Laptop', 'desktop': 'Máy bàn', 'other': 'Phụ kiện'};
+					each val, key in menu
+						if (!productType && key == 'all')
+							li(class='active')
+								a(href='/products?type=#{key}') #{val}
+						else if (productType == key)
+							li(class='active')
+								a(href='/products?type=#{key}') #{val}
+						else
+							li
+								a(href='/products?type=#{key}') #{val}
+
 
 			.col-md-9
 				- each item, i in items

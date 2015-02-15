@@ -24,14 +24,16 @@ module.exports = oop.Base.extend({
 		
 		// all products
 		app.get('/products', function (req, res) {
-			var query = {};
+			var params = req.query,
+					query = self.normalize(params);
 
 			dbProduct.getAll(query, function (err, products) {
 				res.render('product/home', {
 					count: _.size(products),
 					items: self.toJSONs(products),
 					page: 'product',
-					title: 'Product Page'
+					title: 'Product Page',
+					productType: query.type
 				});
 			});
 		});
@@ -91,5 +93,19 @@ module.exports = oop.Base.extend({
 		rawJson.price = numeral(obj.price).format('0,0');
 
 		return rawJson;
+	},
+
+	normalize: function (params) {
+		var type = params.type,
+				name = params.name,
+				query = {};
+
+		if (type && type !== 'all')
+			query.type = type;
+
+		if (name)
+			query.name = new RegExp(name, 'gi');
+
+		return query;
 	}
 });

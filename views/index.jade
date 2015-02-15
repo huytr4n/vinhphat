@@ -1,7 +1,7 @@
 extends components/layout
 
 block content
-	.container
+	.container.middle-section
 		.row
 			.col-md-1
 			.col-md-10.index-slider
@@ -31,9 +31,10 @@ block content
 			//- 	span(class='glyphicon glyphicon-chevron-right' aria-hidden='true')
 			//- 	span(class='sr-only') Next
 
-	.container
+	.container.middle-section
 		.row
-			.col-md-9
+			.col-md-1
+			.col-md-8
 				h3 SHOP
 			.col-md-3
 				a(href='javascript:void(0)')
@@ -41,9 +42,12 @@ block content
 			.col-md-12.text-center
 				p outline here
 			.col-md-12
-				- each item, i in items
-					.col-md-3
-						a(class='product-item' href='/products/#{item._id}')
-							img(class='img-responsive' src='#{item.imageURL}')
-						p(class='product-item-name') #{item.name}
-						p(class='product-item-price') #{item.price} #{item.currency}
+				.col-md-1
+				.col-md-9
+					- each item, i in items
+						.col-md-3.item-block.hvr-grow
+							a(href='/products/#{item._id}')
+								div(class='product-item-img')
+									img(class='img-responsive' src='#{item.imageURL}')
+								p(class='product-item-name') #{item.name}
+								p(class='product-item-price') #{item.price} #{item.currency}
