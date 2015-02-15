@@ -1,0 +1,27 @@
+//- h1 Home of product
+
+extends ../components/layout
+
+block content
+	.container.middle-section
+		.row
+			.col-md-3
+				ul(class='nav nav-pills nav-stacked')
+					li
+						a(href='#') All
+					li(class='active')
+						a(href='#') Laptop
+					li
+						a(href='#') Desktop
+					li
+						a(href='#') Phone
+					li
+						a(href='#') Accessories
+
+			.col-md-9
+				- each item, i in items
+					.col-md-4
+						a(class='product-item' href='/products/#{item._id}')
+							img(class='img-responsive' src='#{item.imageURL}')
+						p(class='product-item-name') #{item.name}
+						p(class='product-item-price') #{item.price} #{item.currency}

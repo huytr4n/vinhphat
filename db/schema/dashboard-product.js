@@ -11,6 +11,10 @@ module.exports = function () {
 		currency: String,
 
 		imageURL: String,
+		type: String, // laptop, desktop, phone, other
+		hashtags: Array,
+
+		description: String,
 
 		cretedAt: {default: new Date, type: Date},
 		updatedAt: Date

@@ -1,6 +1,7 @@
 var oop = require('node-g3').oop,
 		async = require('async'),
-		_ = require('underscore');
+		_ = require('underscore'),
+		numeral = require('numeral');
 
 module.exports = oop.Base.extend({
 	constructor: function (wrapper) {
@@ -19,60 +20,62 @@ module.exports = oop.Base.extend({
 		var self = this,
 				dbProduct = this.db.getInstance('dbProduct');
 		
+		// all products
+		app.get('/products', function (req, res) {
+			var query = {};
+
+			dbProduct.getAll(query, function (err, products) {
+				res.render('product/home', {
+					count: _.size(products),
+					items: self.toJSONs(products),
+					page: 'product',
+					title: 'Product Page'
+				});
+			});
+		});
+				
+		// product detail
 		app.get('/products/:id', function (req, res) {
 			var id = req.params.id;
 			
 			dbProduct.findById(id, function (err, product) {
 				product = product || {};
 
-				res.render('product/detail', {product: product});
+				res.render('product/detail', {product: self.toJSON(product)});
 			});
 		});
 	},
 
 	homepage: function (app) {
-		var dbProduct = this.db.getInstance('dbProduct');
+		var self = this,
+				dbProduct = this.db.getInstance('dbProduct');
 
 		app.get('/', function (req, res) {
 			dbProduct.getAll(function (err, products) {
 				products = products || [];
 
-				res.render('index', {count: _.size(products), items: products});
+				res.render('index', {count: _.size(products), items: self.toJSONs(products)});
 			});
 		});
+	},
+
+	toJSONs: function (objs, opts) {
+		var self = this,
+				rawJsons = [];
+
+		_.each(objs, function (obj) {
+			rawJsons.push(self.toJSON(obj));
+		});
+
+		return rawJsons;
+	},
+
+	toJSON: function (obj) {
+		var rawJson = obj.toJSON ? obj.toJSON() : obj;
+
+		// format price
+		rawJson.price = numeral(obj.price).format('0,0');
+
+		return rawJson;
 	}
-
-	// add: function (app) {
-	// 	var self = this,
-	// 			dbUser = this.db.getInstance('dbUser');
-
-	// 	app.get('/user/add', function (req, res) {
-	// 		res.render('user/add');
-	// 	});
-
-	// 	app.post('/user', function (req, res) {
-	// 		var body = req.body;
-
-	// 		dbUser.create(body, function () {
-	// 			res.redirect('/user');
-	// 		});
-	// 	});
-	// },
-
-	// del: function (app) {
-	// 	var self = this,
-	// 			dbUser = this.db.getInstance('dbUser');
-
-	// 	app.get('/user/del/:id', function (req, res) {
-	// 		async.waterfall(
-	// 			[
-	// 				function (callback) {
-	// 					dbUser.del(req.params.id, callback);
-	// 				}
-	// 			]
-	// 		, function () {
-	// 			res.redirect('/user');
-	// 		});
-	// 	});
-	// }
 });

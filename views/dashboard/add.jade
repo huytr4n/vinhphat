@@ -20,8 +20,18 @@ block content
 						span(class='navbar-brand') currency
 						input(type='text', value='vnd', name='currency', class='form-control')
 					.col-md-12
+						span(class='navbar-brand') type
+						select(class='form-control', name='type')
+							option(value='laptop') Laptop
+							option(value='desktop') Desktop
+							option(value='phone') Phone
+							option(value='other') Other
+					.col-md-12
 						span(class='navbar-brand') image
 						input(type='text', value='', name='imageURL', class='form-control')
+					.col-md-12
+						span(class='navbar-brand') Description
+						textarea(class='form-control', style='width: 400px; height: 150px;', name='description')
 
 					.col-md-12
 						input(type='button', id='addButton', value='Add', class='btn btn-default', class='block')
@@ -43,9 +53,11 @@ block content
 			$('#addButton').on('click', function () {
 				// submit data
 				var name = $('input[name="name"]').val(),
-						price = $('input[name="price"').val(),
-						currency = $('input[name="currency"').val(),
-						imageURL = $('input[name="imageURL"').val(),
+						price = $('input[name="price"]').val(),
+						currency = $('input[name="currency"]').val(),
+						imageURL = $('input[name="imageURL"]').val(),
+						type = $('select[name="type"]').val(),
+						description = $('textarea[name="description"]').val(),
 						data = {};
 
 				if (name == '' || price == '' || currency == '') {
@@ -55,7 +67,9 @@ block content
 						name: name,
 						price: price,
 						currency: currency,
-						imageURL: imageURL
+						imageURL: imageURL,
+						type: type,
+						description: description
 					};
 
 					$.ajax({

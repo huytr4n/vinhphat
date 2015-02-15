@@ -1,25 +1,32 @@
+- var pageTitle = title || 'Home'
 head
-	title Home
+	title #{pageTitle}
 
 header(class='site-header')
 	.container
 		.row
-			.col-md-6
+			.col-md-9
 				h2
-					a(href='/') SAMPLE
+					a(href='/') Vĩnh Phát Computer
 			.col-md-3
 				.input-group.homepage-search
-					input(type='text' class='form-control' placeholder='Search')
+					input(type='text' class='form-control' placeholder='Tên sản phẩm')
 					span(class='input-group-btn')
-						button(class='btn btn-default' type='button') Search
+						button(class='btn btn-default' type='button') Tìm
 
 nav(class='navbar navbar-default' role='navigation')
 	.container
 		.navbar-collapse.collapse
+			- var menu = {'home': {'href': '/', 'name': 'Trang chủ'}, 'product': {'href': '/products', 'name': 'Sản phẩm'}, 'solution': {'href': '/solution', 'name': 'Giải pháp'}, 'about': {'href': '/about', 'name': 'Liên hệ'}}
+
 			ul(class='nav navbar-nav')
-				li(class='active')
-					a(href='/') Home
-				li
-					a(href='/products') Products
-				li
-					a(href='/about') About
+				each val, key in menu
+					if (!page && key == 'home')
+						li(class='active')
+							a(href='#{val.href}') #{val.name}
+					else if (page && key == page)
+						li(class='active')
+							a(href='#{val.href}') #{val.name}
+					else
+						li
+							a(href='#{val.href}') #{val.name}
