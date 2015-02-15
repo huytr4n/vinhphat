@@ -20,8 +20,9 @@ block content
 
 			.col-md-9
 				- each item, i in items
-					.col-md-4.item-block
-						a(class='product-item' href='/products/#{item._id}')
-							img(class='img-responsive' src='#{item.imageURL}')
-						p(class='product-item-name') #{item.name}
-						p(class='product-item-price') #{item.price} #{item.currency}
+					.col-md-4.item-block.hvr-grow
+						a(href='/products/#{item._id}')
+							div(class='product-item-img')
+								img(class='img-responsive' src='#{item.imageURL}')
+							p(class='product-item-name') #{item.name}
+							p(class='product-item-price') #{item.price} #{item.currency}

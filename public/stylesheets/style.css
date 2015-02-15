@@ -59,10 +59,6 @@ hr {
 	margin-left: 5px !important;
 }
 
-.product-item-name {
-	color: #204a80;
-}
-
 .middle-section {
 	min-height: 300px;
 	margin-top: 30px;
@@ -75,4 +71,31 @@ hr {
 
 .item-block {
 	min-height: 300px;
+}
+
+/**
+ * Product
+ */
+.product-item-img {
+	display: block;
+}
+
+.product-item-name {
+	color: #204a80;
+	margin-top: 10px;
+	font-size: 13pt;
+}
+
+.product-item-price {
+	font-size: 15pt;
+}
+
+.item-block a:hover {
+	text-decoration: none;
+}
+
+@media screen and (min-width : 992px){
+	.product-item-img {
+		height: 160px;
+	}
 }
