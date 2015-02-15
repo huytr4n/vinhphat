@@ -13,7 +13,9 @@ module.exports = oop.Base.extend({
 		var self = this;
 
 		this.get(this.app);
-		this.homepage(this.app);		
+		this.homepage(this.app);
+		this.solution(this.app);
+		this.about(this.app);
 	},
 
 	get: function (app) {
@@ -43,6 +45,18 @@ module.exports = oop.Base.extend({
 
 				res.render('product/detail', {product: self.toJSON(product)});
 			});
+		});
+	},
+
+	solution: function (app) {
+		app.get('/solution', function (req, res) {
+			res.render('solution', {page: 'Solution', title: 'Solution'});
+		});
+	},
+
+	about: function (app) {
+		app.get('/about', function (req, res) {
+			res.render('about', {page: 'About', title: 'About'});
 		});
 	},
 
