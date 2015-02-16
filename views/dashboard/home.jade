@@ -30,7 +30,8 @@ block content
 						td
 							span #{item.currency}
 						td
-							span #{item.status}
+							span
+								a(href='javascript:void(0)', class='changeStatusBtn', id='#{item._id}', rel='#{item.status}') #{item.status}
 						td
 							a(class='removeBtn aTagCursor', id='#{item._id}') remove
 
@@ -41,6 +42,15 @@ block content
 
 	script(type='text/javascript').
 		$(document).ready(function () {
+			// change status
+			$('.changeStatusBtn').on('click', function () {
+				var id = this.id,
+						status = this.rel;
+				
+				console.log(id);
+			});
+
+			// delete
 			$('.removeBtn').on('click', function () {
 				var id = this.id;
 

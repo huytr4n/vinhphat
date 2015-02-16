@@ -1,13 +1,123 @@
 extends components/layout
 
 block content
-	.container.middle-section
-		.row
-			.col-md-12
-				ul.nav.nav-tabs(role='tablist')
-					li.active(role='presentation')
-						a(href='#home', aria-controls='home', role='tab', data-toggle='tab')
-							b Chi tiết
-				.tab-content
-					#home.tab-pane.active(role='tabpanel')
-						
+	doctype html(lang='en')
+	head
+		meta(charset='utf-8')  
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(name='description', content='')
+		meta(name='author', content='') 
+		link(rel='apple-touch-icon-precomposed', sizes='144x144', href='/custom/images/ico/apple-touch-icon-144-precomposed.png')
+		link(rel='apple-touch-icon-precomposed', sizes='114x114', href='/custom/images/ico/apple-touch-icon-114-precomposed.png')
+		link(rel='apple-touch-icon-precomposed', sizes='72x72', href='/custom/images/ico/apple-touch-icon-72-precomposed.png')
+		link(rel='apple-touch-icon-precomposed', href='/custom/images/ico/apple-touch-icon-57-precomposed.png')
+		
+	body#home.homepage
+		section#features
+			.container
+				.section-header
+					h2.section-title.text-center.wow.fadeInDown Vĩnh Phát
+					p.text-center.wow.fadeInDown Sửa chữa máy tính chuyên nghiệp - nhanh chóng - tận nơi
+				.row
+					.col-sm-6.wow.fadeInLeft
+						img.img-responsive(src='/custom/images/main-feature.png', alt='')
+					.col-sm-6
+						.media.service-box.wow.fadeInRight
+							.pull-left
+								i.fa.fa-line-chart
+							.media-body
+								h4.media-heading CHUYÊN NGHIỆP
+								p Chúng tôi là kỹ sư máy tính lành nghề, có hơn 10 năm kinh 
+						.media.service-box.wow.fadeInRight
+							.pull-left
+								i.fa.fa-cubes
+							.media-body
+								h4.media-heading NHANH CHÓNG
+								p Nhanh chóng xử lý sự cố của bạn trong thời gian sớm nhất
+						.media.service-box.wow.fadeInRight
+							.pull-left
+								i.fa.fa-pie-chart
+							.media-body
+								h4.media-heading TẬN NƠI
+								p Tiết kiệm thời gian với dịch vụ tận nơi 
+		section#services
+			.container
+				.section-header
+					h2.section-title.text-center.wow.fadeInDown TẠI SAO BẠN NÊN CHỌN CHÚNG TÔI
+					p.text-center.wow.fadeInDown
+						| Hơn 10 năm kinh nghiệm thiết kế, thi công mạng LAN, Wireless, tổng đài điện thoại, Camera
+						br
+						| quan sát tại Đà Nẵng, Huế, Quảng Nam... với phương câm "Chất lượng khẳng định, dịch vụ chuyên
+						br
+						| nghiệp", công ty VĨNH PHÁT đã luôn được sự tín nhiệm cao của khách hàng và là một công ty uy tín tại Đà Nẵng.
+						br
+						br
+						| Khách hàng tiêu biểu của chúng tôi: Khách sạn Hội An, Bệnh viện mắt Đà Nẵng, Đại học sư phạm
+						br
+						| Đà Nẵng, Trường cao đẳng y tế 2, Ngân hàng Quân Đội, Ngân hàng Đông Á,
+						br
+						| công ty thời trang YALY, Sao Khuê Mobile
+				.row
+					.features
+						.col-md-4.col-sm-6.wow.fadeInUp(data-wow-duration='300ms', data-wow-delay='0ms')
+							.media.service-box
+								.pull-left
+									i.fa.fa-line-chart
+								.media-body
+									h4.media-heading LUÔN HOÀN THÀNH CÔNG VIỆC
+									p Kinh nghiệm hơn 10 năm trong lĩnh vực mạng máy tính. Chúng tôi giải quyết mọi vấn đề
+
+						.col-md-4.col-sm-6.wow.fadeInUp(data-wow-duration='300ms', data-wow-delay='100ms')
+							.media.service-box
+								.pull-left
+									i.fa.fa-cubes
+								.media-body
+									h4.media-heading DỊCH VỤ HOÀN HẢO
+									p Phong cách phục vụ chu đáo, đội ngũ nhân viên chuyên nghiệp, tận tâm
+						// /.col-md-4
+						.col-md-4.col-sm-6.wow.fadeInUp(data-wow-duration='300ms', data-wow-delay='200ms')
+							.media.service-box
+								.pull-left
+									i.fa.fa-pie-chart
+								.media-body
+									h4.media-heading GIẢI PHÁP TIN CẬY
+									p Mang đến cho bạn những giải pháp công nghệ vượt trội từ các hãng nổi tiếng
+						// /.col-md-4
+						.col-md-4.col-sm-6.wow.fadeInUp(data-wow-duration='300ms', data-wow-delay='300ms')
+							.media.service-box
+								.pull-left
+									i.fa.fa-bar-chart
+								.media-body
+									h4.media-heading PHỤC VỤ KHÁCH HÀNG
+									p Luôn tận tâm phục vụ khách hàng
+						// /.col-md-4
+						.col-md-4.col-sm-6.wow.fadeInUp(data-wow-duration='300ms', data-wow-delay='400ms')
+							.media.service-box
+								.pull-left
+									i.fa.fa-language
+								.media-body
+									h4.media-heading GIÁ TRỊ GIA TĂNG
+									p Hệ thống đạt chất lượng ổn định, giảm chi phí vận hành. Nâng cao hiệu quả kinh doanh
+		
+		section#about
+			.container
+				.section-header
+					h2.section-title.text-center.wow.fadeInDown LIÊN HỆ VỚI CHÚNG TÔI
+					p.text-center.wow.fadeInDown
+						| CÔNG TY TNHH VĨNH PHÁT
+						br
+						| Đà Nẵng: 169 đường Hải Phòng - Q. Hải Châu - TP. Đà Nẵng
+						br
+						| Tel: 0511.2248910 - 0914.049.499
+						br
+						br
+						| Email: vinhphatit@yahoo.com
+
+		script(src='/custom/js/owl.carousel.min.js')
+		script(src='/custom/js/mousescroll.js')
+		script(src='/custom/js/smoothscroll.js')
+		script(src='/custom/js/jquery.prettyPhoto.js')
+		script(src='/custom/js/jquery.isotope.min.js')
+		script(src='/custom/js/jquery.inview.min.js')
+		script(src='/custom/js/wow.min.js')
+		script(src='/custom/js/main.js')
