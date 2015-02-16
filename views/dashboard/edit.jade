@@ -6,56 +6,62 @@ block content
 		.col-md-2
 		.col-md-10
 			a(href='/dashboard-admin') back to manager 
-			h1 add product
+			h1 edit product
 
 			form(action='/api/products', method='post', class='navbar-form navbar-left')
 				.form-group
+					.col-md-12
+						input(type='input', class='hidden', value='#{product._id}', id='productId')
 					//- name
 					.col-md-12
 						span(class='navbar-brand') name
-						input(type='text', value='', name='name', class='form-control')
+						input(type='text', value='#{product.name}', name='name', class='form-control')
 					
 					//- price
 					.col-md-12
 						span(class='navbar-brand') price
-						input(type='text', value='', name='price', class='form-control')
+						input(type='text', value='#{product.price}', name='price', class='form-control')
 					
 					//- currency
 					.col-md-12
 						span(class='navbar-brand') currency
-						input(type='text', value='vnđ', name='currency', class='form-control')
+						input(type='text', value='#{product.currency}', name='currency', class='form-control')
 					
 					//- type
 					.col-md-12
 						span(class='navbar-brand') type
+						- var types = ['laptop', 'desktop', 'phone', 'other'];
 						select(class='form-control', name='type')
-							option(value='laptop') Laptop
-							option(value='desktop') Desktop
-							option(value='phone') Phone
-							option(value='other') Other
+							- each type in types
+								if type == product.type
+									option(value='#{type}', selected='selected') #{type}
+								else
+									option(value='#{type}') #{type}
 					
 					//- guarantee
 					.col-md-12
+						- var guarantee = product.guarantee || '';
 						span(class='navbar-brand') guarantee
-						input(type='text', name='guarantee', class='form-control')
+						input(type='text', value='#{guarantee}', name='guarantee', class='form-control')
 					
 					//- promotion
 					.col-md-12
+						- var promotion = product.promotion || '';
 						span(class='navbar-brand') promotion
-						input(type='text', name='promotion', class='form-control')
+						input(type='text', value='#{promotion}', name='promotion', class='form-control')
 					
 					//- image
 					.col-md-12
 						span(class='navbar-brand') image
-						input(type='text', name='imageURL', class='form-control')
+						input(type='text', value='#{product.imageURL}' name='imageURL', class='form-control')
 					
 					//- description
 					.col-md-12
 						span(class='navbar-brand') Description
-						textarea(class='form-control', style='width: 400px; height: 150px;', name='description')
+						textarea(class='form-control', style='width: 400px; height: 150px;', name='description') #{product.description}
 
 					.col-md-12
-						input(type='button', id='addButton', value='Add', class='btn btn-default', class='block')
+						input(type='button', id='addButton', value='Update', class='btn btn-default', class='block')
 
 			div(class='col-md-6', id='successMsg',  hidden='true')
 				.alert.alert-success.alert-dismissible(role='alert')
@@ -73,7 +79,8 @@ block content
 		$(document).ready(function () {
 			$('#addButton').on('click', function () {
 				// submit data
-				var name = $('input[name="name"]').val(),
+				var id = $('#productId').val(),
+						name = $('input[name="name"]').val(),
 						price = $('input[name="price"]').val(),
 						currency = $('input[name="currency"]').val(),
 						guarantee = $('input[name="guarantee"]').val(),
@@ -97,9 +104,11 @@ block content
 						description: description
 					};
 
+					console.log(data);
+
 					$.ajax({
-						url: '/api/products',
-						method: 'post',
+						url: '/api/products/' + id,
+						method: 'put',
 						dataType: 'json',
 						data: data
 					}).done(function (result) {
@@ -114,4 +123,3 @@ block content
 				}
 			});
 		});
-		

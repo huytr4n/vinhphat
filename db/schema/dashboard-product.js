@@ -19,6 +19,8 @@ module.exports = function () {
 
 		description: String,
 
+		code: String,
+
 		status: {default: true, type: Boolean},
 
 		cretedAt: {default: new Date, type: Date},
@@ -26,4 +28,10 @@ module.exports = function () {
 	});
 		
 	mongoose.model('Product', User, 'products');
+
+	// Middleware
+	User.pre('save', function (next) {
+		this.code = Math.round(Math.random() * 10000).toString();
+		next();
+	});
 };

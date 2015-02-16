@@ -29,6 +29,7 @@ module.exports = oop.Base.extend({
 		var self = this,
 				dbProduct = this.db.getInstance('dbProduct');
 
+		// admin manager page
 		app.get('/dashboard-admin', this.checkLogin, function (req, res) {
 			dbProduct.getAll({}, function (err, products) {
 				products = products || [];
@@ -37,13 +38,20 @@ module.exports = oop.Base.extend({
 			});
 		});
 
-		app.get('/dashboard-product/add', this.checkLogin, function (req, res) {
+		// admin add page
+		app.get('/dashboard-admin/add', this.checkLogin, function (req, res) {
 			res.render('dashboard/add');
 		});
 
-		app.get('/session', function (req, res) {
-			req.session.user = {user: 'admin'};
-			res.send('ok');
+		// admin edit page
+		app.get('/dashboard-admin/:id', this.checkLogin, function (req, res) {
+			var id = req.params.id;
+			
+			dbProduct.findById(id, function (err, product) {
+				product = product || {};
+
+				res.render('dashboard/edit', {product: product});
+			});
 		});
 	},
 

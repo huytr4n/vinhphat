@@ -9,6 +9,8 @@ block content
 				
 				.col-md-6.brief-info-section
 					h2.product-detail-name #{product.name}
+					h4
+						b Code: ##{product.code}
 					h3
 						b Giá: #{product.price} #{product.currency}
 					- var status = product.status ? 'Còn hàng' : 'Hết hàng';
