@@ -24,19 +24,13 @@ block content
 						.item
 							img(src='/images/slider-5.jpg')
 
-	.container.middle-section
-		.row
-			.col-md-1
-			.col-md-10
-				ul.nav.nav-tabs(role='tablist')
-					li.active(role='presentation')
-						a(href='#home', aria-controls='home', role='tab', data-toggle='tab')
-							b Sản phẩm nổi bật
-			.col-md-12.text-center
-				h4.magin-bottom-100 Sản phẩm đang hot
-			.col-md-12
-				.col-md-1
-				.col-md-10
+	section#features
+		.container
+			.section-header
+				h2.section-title.text-center.wow.fadeInDown SẢN PHẨM ĐANG HOT
+				p.text-center.wow.fadeInDown
+			.row
+				.features
 					- each item, i in items
 						.col-md-3.item-block.hvr-grow
 							a(href='/products/#{item._id}')
