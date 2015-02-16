@@ -1,6 +1,13 @@
-- var pageTitle = title || 'Vĩnh Phát - Trang chủ'
 head
-	title #{pageTitle}
+	case page
+		when 'product'
+			title Sản phẩm - Vĩnh Phát
+		when 'solution'
+			title Giải pháp - Vĩnh Phát
+		when 'about'
+			title Liên hệ - Vĩnh Phát
+		default
+			title Vĩnh Phát - Trang chủ
 
 header(class='site-header')
 	.container
