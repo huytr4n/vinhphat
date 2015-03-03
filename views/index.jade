@@ -35,6 +35,9 @@ block content
 						.col-md-3.item-block.hvr-grow
 							a(href='/products/#{item._id}')
 								div(class='product-item-img')
-									img(class='img-responsive' src='#{item.imageURL}')
+									if (item.imageURL)
+										img(class='img-responsive', src='#{item.imageURL}')
+									else
+										img(class='img-responsive', src='/images/default_product_image_400.jpg')
 								p(class='product-item-name') #{item.name}
 								p(class='product-item-price') #{item.price} #{item.currency}
