@@ -228,6 +228,6 @@ jQuery(function($) {'use strict';
 			map: map
 		});
 	}
-	google.maps.event.addDomListener(window, 'load', initialize_map);
+	// google.maps.event.addDomListener(window, 'load', initialize_map);
 
 });
