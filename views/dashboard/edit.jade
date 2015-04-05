@@ -30,7 +30,7 @@ block content
 					//- type
 					.col-md-12
 						span(class='navbar-brand') type
-						- var types = ['laptop', 'desktop', 'phone', 'other'];
+						- var types = ['laptop', 'desktop', 'camera', 'network', 'laptop-eco', 'phone', 'other'];
 						select(class='form-control', name='type')
 							- each type in types
 								if type == product.type

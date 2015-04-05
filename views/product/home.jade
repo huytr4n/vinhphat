@@ -7,7 +7,7 @@ block content
 		.row
 			.col-md-3
 				ul(class='nav nav-pills nav-stacked')
-					- var menu = {'all': 'Toàn bộ', 'laptop': 'Laptop', 'desktop': 'Máy bàn', 'other': 'Phụ kiện'};
+					- var menu = {'all': 'Toàn bộ', 'laptop': 'Laptop', 'laptop-eco': 'Laptop giá rẻ', 'desktop': 'Máy bàn', 'network': 'Network', 'camera': 'Camera', 'software': 'Phần mềm', 'other': 'Linh kiện'};
 					each val, key in menu
 						if (!productType && key == 'all')
 							li(class='active')
@@ -25,6 +25,9 @@ block content
 					.col-md-4.item-block.hvr-grow
 						a(href='/products/#{item._id}')
 							div(class='product-item-img')
-								img(class='img-responsive' src='#{item.imageURL}')
+								if (item.imageURL)
+									img(class='img-responsive' src='#{item.imageURL}')
+								else
+									img(class='img-responsive', src='/images/default_product_image_400.jpg')
 							p(class='product-item-name') #{item.name}
 							p(class='product-item-price') #{item.price} #{item.currency}

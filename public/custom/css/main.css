@@ -935,3 +935,7 @@ ul.nostyle i {
   box-shadow: none;
   -webkit-box-shadow: none;
 }
+
+.menu-text {
+  margin-left: 20px;
+}

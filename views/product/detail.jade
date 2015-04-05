@@ -5,7 +5,10 @@ block content
 		.row
 			.col-md-12.middle-section
 				.col-md-6.img-section
-					img(class='img-responsive' src='#{product.imageURL}')
+					if (product.imageURL)
+						img(class='img-responsive' src='#{product.imageURL}')
+					else
+						img(class='img-responsive', src='/images/default_product_image_400.jpg')
 				
 				.col-md-6.brief-info-section
 					h2.product-detail-name #{product.name}

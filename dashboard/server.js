@@ -7,7 +7,7 @@ var http = require('http'),
  		bodyParser = require('body-parser'),
  		session = require('express-session'),
  		configs = require('../utils/configs'),
- 		port = configs.get('server:port');
+ 		port = process.env.PORT || configs.get('server:port');
 
 module.exports = function (wrapper, callback) {
 	var app = wrapper.app = express();
