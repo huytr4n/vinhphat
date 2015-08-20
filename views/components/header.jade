@@ -12,19 +12,19 @@ head
 header(class='site-header')
 	.container
 		.row
-			.col-md-9
+			.col-md-12
 				h1
-					img(id='logo-img', src='/images/logo.jpg')
+					img(id='logo-img' src='/images/vp-logo.png')
 					a(class='menu-text' href='/') Vĩnh Phát Computer
-			.col-md-3
-				.input-group.homepage-search
-					input(type='text' class='form-control' placeholder='Tên sản phẩm', name='searchMsg', id='searchBox')
-					span(class='input-group-btn')
-						button(class='btn btn-default' type='button', id='searchBtn') Tìm
+			//- .col-md-3
+			//- 	.input-group.homepage-search
+			//- 		input(type='text' class='form-control' placeholder='Tên sản phẩm', name='searchMsg', id='searchBox')
+			//- 		span(class='input-group-btn')
+			//- 			button(class='btn btn-default' type='button', id='searchBtn') Tìm
 
 nav(class='navbar navbar-default' role='navigation')
 	.container
-		.navbar-collapse.collapse
+		.navbar-collapse
 			- var menu = {'home': {'href': '/', 'name': 'Trang chủ'}, 'product': {'href': '/products', 'name': 'Sản phẩm'}, 'solution': {'href': '/solution', 'name': 'Dịch vụ'}, 'about': {'href': '/about', 'name': 'Liên hệ'}}
 
 			ul(class='nav navbar-nav')
