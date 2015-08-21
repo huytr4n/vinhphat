@@ -67,6 +67,10 @@ header .phone-number {
 	font-size: 16px;
 }
 
+h4.phone-number:hover {
+	cursor: pointer;
+}
+
 .navbar-default .navbar-nav>li>a {
 	color: #fff;
 }
