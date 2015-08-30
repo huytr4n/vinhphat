@@ -156,6 +156,14 @@ hr {
 	height: 36px;
 }
 
+p.about-text {
+	font-size: 18px;
+}
+
+.media-heading {
+	line-height: 25px;
+}
+
 @media screen and (min-width : 992px){
 	.product-item-img {
 		height: 160px;
