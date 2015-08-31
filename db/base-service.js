@@ -1,4 +1,4 @@
-var oop = require('node-g3').oop;
+var Base = require('basejs');
 
 var mongoose = require('mongoose'),
 		async = require('async'),
@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 		fnQueue = [];
 
 
-module.exports = oop.Base.extend({
+module.exports = Base.extend({
 
 	modelClass: null,
 
@@ -41,7 +41,7 @@ module.exports = oop.Base.extend({
 	        _.each(fnQueue, function (oneFn) {
 	           oneFn && oneFn();
 	        });
-		    });		
+		    });
     } else {
 			fn && fn();
 		}

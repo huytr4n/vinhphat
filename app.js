@@ -1,11 +1,11 @@
-var oop = require('node-g3').oop,
+var Base = require('basejs'),
 		_ = require('underscore'),
 		async = require('async'),
 
 		dbManager = require('./db/'),
 		ServerManager = require('./dashboard/server');
 
-var Server = oop.Base.extend({
+var Server = Base.extend({
 	constructor: function () {
 		var db = this.db = new dbManager(this, db);
 	},

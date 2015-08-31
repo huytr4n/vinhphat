@@ -1,9 +1,9 @@
-var oop = require('node-g3').oop,
+var Base = require('basejs'),
 		async = require('async'),
 		_ = require('underscore'),
 		numeral = require('numeral');
 
-module.exports = oop.Base.extend({
+module.exports = Base.extend({
 	constructor: function (wrapper) {
 		this.app = wrapper.app || {};
 		this.db = wrapper.db;

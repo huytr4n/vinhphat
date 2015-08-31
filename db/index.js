@@ -1,5 +1,5 @@
 var async = require('async'),
-		oop = require('node-g3').oop,
+		Base = require('basejs'),
     DBUser = require('./service/user'),
     DBProduct = require('./service/dashboard-product');
 
@@ -11,7 +11,7 @@ var servicesClasses = {
 /**
  * @class
  */
-var DatabaseManager = oop.Base.extend({
+var DatabaseManager = Base.extend({
 
   constructor: function(app, opts) {
     this.container = {};
