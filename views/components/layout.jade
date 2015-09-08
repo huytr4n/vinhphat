@@ -1,6 +1,8 @@
 doctype html
 html
 	head
+		script(src='/bower_components/nprogress/nprogress.js')
+		link(rel='stylesheet' href='/bower_components/nprogress/nprogress.css')
 		link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
 		link(rel='stylesheet', href='/bower_components/hover/css/hover-min.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
@@ -10,8 +12,8 @@ html
 		link(href='/custom/css/owl.transitions.css', rel='stylesheet')
 		link(href='/custom/css/prettyPhoto.css', rel='stylesheet')
 		link(href='/custom/css/main.css', rel='stylesheet')
-		link(href='/custom/css/responsive.css', rel='stylesheet') 
-		
+		link(href='/custom/css/responsive.css', rel='stylesheet')
+
 		script(src='/bower_components/jquery/dist/jquery.min.js')
 		script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
 		script(src='/bower_components/smooth-scroll/smooth-scroll.js')
@@ -24,12 +26,14 @@ html
 		script(src='/custom/js/jquery.inview.min.js')
 		script(src='/custom/js/wow.min.js')
 		script(src='/custom/js/main.js')
-			
+
 		script(type='text/javascript').
 			$(document).ready(function () {
 				$.smoothScroll();
+				NProgress.start();
+				NProgress.done();
 			});
-	
+
 	include header
 
 	block content
